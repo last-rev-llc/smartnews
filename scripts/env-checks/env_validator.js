@@ -35,7 +35,6 @@ const isCIEnvironment =
 const envCheckExclusions = [
   "ALGOLIA_MAX_RECORDS",
   "ANALYZE_BUNDLE",
-  "CONTENTFUL_SETTINGS_ID",
   "fsaStoreKey",
   "fsaStoreURL",
   "GRAPHQL_SERVER_URL",
@@ -47,6 +46,7 @@ const envCheckExclusions = [
   "REDIS_USERNAME",
   "SITE_SETTINGS",
   "VERCEL_URL",
+  "DEPLOY_URL"
 ];
 
 // Function to read and parse turbo.json to get required environment variables
