@@ -2,8 +2,7 @@
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": ["**/.env.*local"],
   "globalEnv": [
-    "NODE_ENV",
-    "DOMAIN",
+    "ALGOLIA_MAX_RECORDS",
     "ANALYZE_BUNDLE",
     "CONTENTFUL_DELIVERY_TOKEN",
     "CONTENTFUL_ENV",
@@ -12,17 +11,16 @@
     "CONTENTFUL_USE_PREVIEW",
     "DEFAULT_SITE_ID",
     "DEPLOY_URL",
+    "DOMAIN",
     "GRAPHQL_SERVER_URL",
-    "PREVIEW_TOKEN",
+    "NEXT_PUBLIC_SENTRY_DSN",
+    "NODE_ENV",
     "PAGES_REVALIDATE",
     "PORT",
+    "PREVIEW_TOKEN",
     "SITE_SETTINGS",
     "SITE",
-    "CONTENTFUL_SETTINGS_ID",
-    "NEXT_PUBLIC_SENTRY_DSN",
-    "ALGOLIA_MAX_RECORDS",
-    "VERCEL_URL",
-    "DEPLOY_URL"
+    "VERCEL_URL"
   ],
   "pipeline": {
     "start": {
