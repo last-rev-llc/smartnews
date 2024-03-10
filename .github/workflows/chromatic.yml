@@ -12,15 +12,28 @@ jobs:
     # Operating System
     runs-on: ubuntu-latest
     # Job steps
+    env:
+      ENVKEY: ${{ secrets.ENVKEY }}
     steps:
-      - uses: actions/checkout@v1
-      - name: Install dependencies
-        # 👇 Install dependencies with the same package manager used in the project (replace it as needed), e.g. yarn, npm, pnpm
-        run: pnpm
-        # 👇 Adds Chromatic as a step in the workflow
-      - name: Publish to Chromatic
-        uses: chromaui/action@v1
-        # Chromatic GitHub Action options
+      - name: Checkout
+        uses: actions/checkout@v2
         with:
-          # 👇 Chromatic projectToken, refer to the manage page to obtain it.
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          # 👇 Fetches the full history of the repository
+          fetch-depth: 0
+
+      - name: Install pnpm globally
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+      
+      - name: Installing envkey-source 
+        run: ./scripts/env-checks/ci/git_actions_loader.sh || true
+        
+      - name: Load Envkey vars, Display Value for Z_ENVKEY_TEST_VAR
+        run: |
+          echo "$Z_ENVKEY_TEST_VAR"
+
+      - name: Publish to Chromatic
+        run: pnpm run chromatic -t "$CHROMATIC_PROJECT_TOKEN" --exit-once-uploaded
+        
